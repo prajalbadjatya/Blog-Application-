@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Hello</title>
+        <title>Blog Website</title>
         <link rel="stylesheet" href="style.css">
     </head>
 
@@ -16,6 +16,23 @@
             <form action="/register" method="get">
                 <button type="submit" class="btn btn-primary btn-block btn-large" > Register</button>
             </form>
+
+            <% if (name==="n") { %>
+                <div>
+                    <div id='container'>
+                        <div id='hideMe'><h3 style="color : #ff1e56; text-align: center;">Password Incorrect</h3></div>
+                    </div>
+                    </div>
+            <% } %>
+
+
+            <% if (name==="p") { %>
+                <div>
+                    <div id='container'>
+                        <div id='hideMe'><h3 style="color : #ff1e56; text-align: center;">Username not registered</h3></div>
+                    </div>
+                    </div>
+            <% } %>
         </div>
 
         

@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bellota:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="myposts.css">
+  <title>My Posts</title>
+</head>
+
+<body>
+    <h1 class="firsth1"> <%= name %>'s Posts </h1>
+    <br>
+    <br>
+
+    <% if(val.length===0) { %>
+        <h1>You have not written any posts yet !!</h1>
+    
+
+    <% }  else { %>
+
+    <% for(var i=0; i<val.length; i++) { %>
+
+        <div class="jumbotron">
+            <h1 class="display-4"><%= val[i].title %> </h1>
+            <br>
+            <p class="lead"> <%= val[i].post %> </p>
+            <hr class="my-4">
+            <p>Post #<%= i+1%></p>
+            <!-- <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            </p> -->
+            <form action="/deletepost" method="post">
+
+                <!-- btn-seconday -->
+            <input  class="post_to_be_deleted" type="text" value="<%=val[i].post%>"  name="post_to_be_deleted">
+            <button class="btn btn-danger btn-secondary" data-toggle="tooltip" data-placement="top" title="Clicking this will delete this post" >
+                Delete this post
+
+            </button>
+        </form>
+
+
+          </div>
+
+    <% } %>
+
+    <% } %>
+</body>

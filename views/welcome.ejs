@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+        <title>Welcome <%= name%></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Bellota:400,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="wel.css">  
+
+
+        <nav class="navbar fixed-top navbar-light "> 
+            
+            <a class="navbar-brand" href="#"><h2 class="nav">Blog App</h2></a>
+            <ul class="ul">
+                <li>
+                    <form action="/myposts" method="get">
+
+            
+
+                        <button type="submit" class="mypostsnavbar" > My Posts</button>
+                       
+                    </form>
+                </li>
+                
+        
+                <li>
+                    <form action="/logout" method="get">
+
+            
+
+                        <button type="submit" class="mypostsnavbar" > Logout </button>
+                       
+                    </form>
+                    
+                </li>
+            </ul>
+    
+            
+        </nav> 
+
+        
+        
+
+    </head>
+
+
+
+    
+
+
+
+
+    
+
+    <body>
+
+
+    <br><br><br><br>
+
+
+         
+         
+
+
+         <h1 class="welcome" >Welcome <%= name %></h1>
+         <br><br>
+
+
+         
+         
+
+
+         
+
+
+         <form action="postblog" method="post">
+             
+            <!-- <input type="textarea"  name="blog1" placeholder="Write here" autocomplete="off"> -->
+            <input type="text" class="topic" name="title" placeholder="Enter topic here" autocomplete="off" required>
+            <br><br>
+
+
+            
+
+
+
+
+
+
+
+
+
+            <!-- <textarea class="textarea" name="blog1" placeholder="Write here" autocomplete="off" cols="50" rows="5" required></textarea> -->
+            <input type="text" class="postcontent"  name="blog1" placeholder="Write here" autocomplete="off" required>
+
+            
+            <br><br>
+            <button type="submit" class="btn btn-success" >Post</button>
+         </form>
+
+
+         <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+
+
+
+
+         <% for(var i=0; i<val.length ; i++) { %>
+         <!-- <h1 class="aa"><%=  val[i].post %></h1> -->
+
+         <div class="jumbotron">
+
+            <h1 class="display-4"><%= val[i].title %></h1>
+
+            <br>
+            <p class="lead"> <%= val[i].post %> </p>
+            <hr class="my-4">
+            <p>This post is written by  <%= val[i].author %> </p>
+            <!-- <p>The id of the blog is <%= val[i].postid %> </p> -->
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+
+            
+
+            
+
+            <% if(val[i].author === name) { %>
+                <form action="/deletepost" method="post">
+
+                    <!-- btn-seconday -->
+                 <input  class="post_to_be_deleted" type="text" value="<%=val[i].post%>"  name="post_to_be_deleted">
+                <button class="btn btn-danger btn-secondary" data-toggle="tooltip" data-placement="top" title="Clicking this will delete this post" >
+                    Delete this post
+
+                </button>
+
+                
+                
+                </form>
+            <% } %> 
+
+
+            <form action="/likepost" method="post">
+                <button class="likebtn"><i class="far fa-thumbs-up fa-2x"></i></button>
+                <h3> <%=val[i].likecount %> </h3>
+                <input class="post_to_be_liked" type="text" value="<%= val[i].postid %>" name="post_to_be_liked">
+            </form>
+
+            
+
+            
+
+          </div>
+
+         <% } %>
+
+         <br>
+         
+         
+<!--          
+         <form action="/myposts" method="get">
+
+            
+
+            <button type="submit" class="btnn btnn-primary btnn-block btnn-large" > My Posts</button>
+           
+        </form>
+         
+
+
+
+        <form action="/logout" method="get">
+            <button type="submit" class="btnn btnn-primary btnn-block btnn-large" > Logout</button>
+           
+        </form> -->
+
+
+
+        
+
+
+        <script src="https://kit.fontawesome.com/f229c87036.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+
+
+
+
+  
+            
+            
+     $(document).ready(function(){
+	     $(window).scroll(function () {
+			if ($(this).scrollTop() > 50) {
+				$('#back-to-top').fadeIn();
+			} else {
+				$('#back-to-top').fadeOut();
+			}
+		});
+		// scroll body to 0px on click
+		$('#back-to-top').click(function () {
+			$('body,html').animate({
+				scrollTop: 0
+			}, 400);
+			return false;
+        });
+    });
+
+
+   
+        
+
+
+        
+    
+
+
+        </script>
+
+
+
+
+       
+    </body>
+
+
+
+ </html>
+    
